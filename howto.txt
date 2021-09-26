@@ -1,0 +1,380 @@
+Start With Bytecode:
+protected propagateLevel(JIZ)V
+    // parameter  id
+    // parameter  level
+    // parameter  decrease
+   L0
+    LINENUMBER 61 L0
+    LLOAD 1
+    INVOKESTATIC net/minecraft/util/math/ChunkSectionPos.fromBlockPos (J)J
+    LSTORE 5
+   L1
+    LINENUMBER 65 L1
+    GETSTATIC net/minecraft/world/chunk/light/ChunkBlockLightProvider.DIRECTIONS : [Lnet/minecraft/util/math/Direction;
+    ASTORE 7
+    ALOAD 7
+    ARRAYLENGTH
+    ISTORE 8
+    ICONST_0
+    ISTORE 9
+   L2
+   FRAME FULL [net/minecraft/world/chunk/light/ChunkBlockLightProvider J I I J [Lnet/minecraft/util/math/Direction; I I] []
+    ILOAD 9
+    ILOAD 8
+    IF_ICMPGE L3
+    ALOAD 7
+    ILOAD 9
+    AALOAD
+    ASTORE 10
+   L4
+    LINENUMBER 67 L4
+    LLOAD 1
+    ALOAD 10
+    INVOKESTATIC net/minecraft/util/math/BlockPos.offset (JLnet/minecraft/util/math/Direction;)J
+    LSTORE 11
+   L5
+    LINENUMBER 68 L5
+    LLOAD 11
+    INVOKESTATIC net/minecraft/util/math/ChunkSectionPos.fromBlockPos (J)J
+    LSTORE 13
+   L6
+    LINENUMBER 69 L6
+    LLOAD 5
+    LLOAD 13
+    LCMP
+    IFEQ L7
+    ALOAD 0
+    GETFIELD net/minecraft/world/chunk/light/ChunkBlockLightProvider.lightStorage : Lnet/minecraft/world/chunk/light/LightStorage;
+    CHECKCAST net/minecraft/world/chunk/light/BlockLightStorage
+    LLOAD 13
+    INVOKEVIRTUAL net/minecraft/world/chunk/light/BlockLightStorage.hasSection (J)Z
+    IFEQ L8
+   L7
+    LINENUMBER 70 L7
+   FRAME APPEND [T J]
+    ALOAD 0
+    LLOAD 1
+    LLOAD 11
+    ILOAD 3
+    ILOAD 4
+    INVOKEVIRTUAL net/minecraft/world/chunk/light/ChunkBlockLightProvider.propagateLevel (JJIZ)V
+   L8
+    LINENUMBER 65 L8
+   FRAME CHOP 2
+    IINC 9 1
+    GOTO L2
+   L3
+    LINENUMBER 74 L3
+   FRAME FULL [] []
+    RETURN
+   L9
+
+Extra Info:
+    Method Mappings:
+        "net/minecraft/util/math/ChunkSectionPos#fromBlockPos(J)J" ->                   "(III)J"
+        "net/minecraft/util/math/BlockPos#offset(JLnet/minecraft/util/math/Direction;)J" ->                                "(IIILnet/minecraft/util/math/Direction;)J"
+        "net/minecraft/world/chunk/light/ChunkBlockLightProvider#propagateLevel(JJIZ)V" -> "(IIIIIIIZ)V"
+    Expand:
+        - Local Var #1 (Parameter #1)
+        - Local Var #11
+
+Step One:
+    Change Descriptor (JIZ)V -> (IIIIZ)V
+
+Step Two:
+    Create Local Variable Mapper:
+    0 -> 0
+    1 -> 1 (Expanded)
+    3 -> 4
+    4 -> 5
+    5 -> 6
+    7 -> 8
+    8 -> 9
+    9 -> 10
+    10 -> 11
+    11 -> 12 (Expanded)
+    13 -> 15
+
+    (1, 12) are now the expanded
+
+Step Three:
+    Remap Local Variables:
+        Result:
+            protected propagateLevel(JIZ)V
+                // parameter  id
+                // parameter  level
+                // parameter  decrease
+               L0
+                LINENUMBER 61 L0
+                LLOAD 1
+                INVOKESTATIC net/minecraft/util/math/ChunkSectionPos.fromBlockPos (J)J
+                LSTORE 6
+               L1
+                LINENUMBER 65 L1
+                GETSTATIC net/minecraft/world/chunk/light/ChunkBlockLightProvider.DIRECTIONS : [Lnet/minecraft/util/math/Direction;
+                ASTORE 8
+                ALOAD 8
+                ARRAYLENGTH
+                ISTORE 9
+                ICONST_0
+                ISTORE 10
+               L2
+               FRAME FULL [net/minecraft/world/chunk/light/ChunkBlockLightProvider J I I J [Lnet/minecraft/util/math/Direction; I I] []
+                ILOAD 10
+                ILOAD 9
+                IF_ICMPGE L3
+                ALOAD 8
+                ILOAD 10
+                AALOAD
+                ASTORE 11
+               L4
+                LINENUMBER 67 L4
+                LLOAD 1
+                ALOAD 11
+                INVOKESTATIC net/minecraft/util/math/BlockPos.offset (JLnet/minecraft/util/math/Direction;)J
+                LSTORE 12
+               L5
+                LINENUMBER 68 L5
+                LLOAD 12
+                INVOKESTATIC net/minecraft/util/math/ChunkSectionPos.fromBlockPos (J)J
+                LSTORE 15
+               L6
+                LINENUMBER 69 L6
+                LLOAD 6
+                LLOAD 15
+                LCMP
+                IFEQ L7
+                ALOAD 0
+                GETFIELD net/minecraft/world/chunk/light/ChunkBlockLightProvider.lightStorage : Lnet/minecraft/world/chunk/light/LightStorage;
+                CHECKCAST net/minecraft/world/chunk/light/BlockLightStorage
+                LLOAD 15
+                INVOKEVIRTUAL net/minecraft/world/chunk/light/BlockLightStorage.hasSection (J)Z
+                IFEQ L8
+               L7
+                LINENUMBER 70 L7
+               FRAME APPEND [T J]
+                ALOAD 0
+                LLOAD 1
+                LLOAD 12
+                ILOAD 4
+                ILOAD 5
+                INVOKEVIRTUAL net/minecraft/world/chunk/light/ChunkBlockLightProvider.propagateLevel (JJIZ)V
+               L8
+                LINENUMBER 65 L8
+               FRAME CHOP 2
+                IINC 10 1
+                GOTO L2
+               L3
+                LINENUMBER 74 L3
+               FRAME FULL [] []
+                RETURN
+               L9
+
+Step Four:
+    Remap getX, getY, getZ:
+        In this case nothing happens but if var 8 was mapped it would turn
+            LLOAD 8
+            INVOKESTATIC "net/minecraft/util/math/BlockPos#unpackLongY"
+        into
+            ILOAD 9
+
+Step Five:
+    Apply Patterns:
+        Pattern One:
+            Transform:
+                LLOAD N
+                ALOAD M
+                INVOKESTATIC net/minecraft/util/math/BlockPos.offset (JLnet/minecraft/util/math/Direction;)J
+            Into:
+                X Version:
+                    ILOAD N
+                    ALOAD M
+                    INVOKEDYNAMIC net/minecarft/util/math/Direction.getOffsetX (Lnet/minecraft/util/math/Direction;)I
+                    IADD
+                Y Version:
+                    ILOAD N + 2
+                    ALOAD M
+                    INVOKEDYNAMIC net/minecarft/util/math/Direction.getOffsetY (Lnet/minecraft/util/math/Direction;)I
+                    IADD
+                Z Version:
+                    ILOAD N + 2
+                    ALOAD M
+                    INVOKEDYNAMIC net/minecarft/util/math/Direction.getOffsetZ (Lnet/minecraft/util/math/Direction;)I
+                    IADD
+    Result:
+        protected propagateLevel(JIZ)V
+                // parameter  id
+                // parameter  level
+                // parameter  decrease
+               L0
+                LINENUMBER 61 L0
+                LLOAD 1
+                INVOKESTATIC net/minecraft/util/math/ChunkSectionPos.fromBlockPos (J)J
+                LSTORE 6
+               L1
+                LINENUMBER 65 L1
+                GETSTATIC net/minecraft/world/chunk/light/ChunkBlockLightProvider.DIRECTIONS : [Lnet/minecraft/util/math/Direction;
+                ASTORE 8
+                ALOAD 8
+                ARRAYLENGTH
+                ISTORE 9
+                ICONST_0
+                ISTORE 10
+               L2
+               FRAME FULL [net/minecraft/world/chunk/light/ChunkBlockLightProvider J I I J [Lnet/minecraft/util/math/Direction; I I] []
+                ILOAD 10
+                ILOAD 9
+                IF_ICMPGE L3
+                ALOAD 8
+                ILOAD 10
+                AALOAD
+                ASTORE 11
+               L4
+                LINENUMBER 67 L4
+                ILOAD 1
+                ALOAD 11
+                INVOKEDYNAMIC net/minecarft/util/math/Direction.getOffsetX (Lnet/minecraft/util/math/Direction;)I
+                IADD
+                ISTORE 12
+
+                ILOAD 2
+                ALOAD 11
+                INVOKEDYNAMIC net/minecarft/util/math/Direction.getOffsetX (Lnet/minecraft/util/math/Direction;)I
+                IADD
+                ISTORE 13
+
+                ILOAD 3
+                ALOAD 11
+                INVOKEDYNAMIC net/minecarft/util/math/Direction.getOffsetX (Lnet/minecraft/util/math/Direction;)I
+                IADD
+                ISTORE 14
+               L5
+                LINENUMBER 68 L5
+                LLOAD 12
+                INVOKESTATIC net/minecraft/util/math/ChunkSectionPos.fromBlockPos (J)J
+                LSTORE 15
+               L6
+                LINENUMBER 69 L6
+                LLOAD 6
+                LLOAD 15
+                LCMP
+                IFEQ L7
+                ALOAD 0
+                GETFIELD net/minecraft/world/chunk/light/ChunkBlockLightProvider.lightStorage : Lnet/minecraft/world/chunk/light/LightStorage;
+                CHECKCAST net/minecraft/world/chunk/light/BlockLightStorage
+                LLOAD 15
+                INVOKEVIRTUAL net/minecraft/world/chunk/light/BlockLightStorage.hasSection (J)Z
+                IFEQ L8
+               L7
+                LINENUMBER 70 L7
+               FRAME APPEND [T J]
+                ALOAD 0
+                LLOAD 1
+                LLOAD 12
+                ILOAD 4
+                ILOAD 5
+                INVOKEVIRTUAL net/minecraft/world/chunk/light/ChunkBlockLightProvider.propagateLevel (JJIZ)V
+               L8
+                LINENUMBER 65 L8
+               FRAME CHOP 2
+                IINC 10 1
+                GOTO L2
+               L3
+                LINENUMBER 74 L3
+               FRAME FULL [] []
+                RETURN
+               L9
+
+Step Six:
+    Remap LLOAD in methods for mapped variables and transformed methods
+    Result:
+        protected propagateLevel(JIZ)V
+                // parameter  id
+                // parameter  level
+                // parameter  decrease
+               L0
+                LINENUMBER 61 L0
+                ILOAD 1
+                ILOAD 2
+                ILOAD 3
+                INVOKESTATIC net/minecraft/util/math/ChunkSectionPos.fromBlockPos (III)J
+                LSTORE 6
+               L1
+                LINENUMBER 65 L1
+                GETSTATIC net/minecraft/world/chunk/light/ChunkBlockLightProvider.DIRECTIONS : [Lnet/minecraft/util/math/Direction;
+                ASTORE 8
+                ALOAD 8
+                ARRAYLENGTH
+                ISTORE 9
+                ICONST_0
+                ISTORE 10
+               L2
+               FRAME FULL [net/minecraft/world/chunk/light/ChunkBlockLightProvider J I I J [Lnet/minecraft/util/math/Direction; I I] []
+                ILOAD 10
+                ILOAD 9
+                IF_ICMPGE L3
+                ALOAD 8
+                ILOAD 10
+                AALOAD
+                ASTORE 11
+               L4
+                LINENUMBER 67 L4
+                ILOAD 1
+                ALOAD 11
+                INVOKEDYNAMIC net/minecarft/util/math/Direction.getOffsetX (Lnet/minecraft/util/math/Direction;)I
+                IADD
+                ISTORE 12
+
+                ILOAD 2
+                ALOAD 11
+                INVOKEDYNAMIC net/minecarft/util/math/Direction.getOffsetX (Lnet/minecraft/util/math/Direction;)I
+                IADD
+                ISTORE 13
+
+                ILOAD 3
+                ALOAD 11
+                INVOKEDYNAMIC net/minecarft/util/math/Direction.getOffsetX (Lnet/minecraft/util/math/Direction;)I
+                IADD
+                ISTORE 14
+               L5
+                LINENUMBER 68 L5
+                ILOAD 12
+                ILOAD 13
+                ILOAD 14
+                INVOKESTATIC net/minecraft/util/math/ChunkSectionPos.fromBlockPos (III)J
+                LSTORE 15
+               L6
+                LINENUMBER 69 L6
+                LLOAD 6
+                LLOAD 15
+                LCMP
+                IFEQ L7
+                ALOAD 0
+                GETFIELD net/minecraft/world/chunk/light/ChunkBlockLightProvider.lightStorage : Lnet/minecraft/world/chunk/light/LightStorage;
+                CHECKCAST net/minecraft/world/chunk/light/BlockLightStorage
+                LLOAD 15
+                INVOKEVIRTUAL net/minecraft/world/chunk/light/BlockLightStorage.hasSection (J)Z
+                IFEQ L8
+               L7
+                LINENUMBER 70 L7
+               FRAME APPEND [T J]
+                ALOAD 0
+                ILOAD 1
+                ILOAD 2
+                ILOAD 3
+                ILOAD 12
+                ILOAD 13
+                ILOAD 14
+                ILOAD 4
+                ILOAD 5
+                INVOKEVIRTUAL net/minecraft/world/chunk/light/ChunkBlockLightProvider.propagateLevel (IIIIIIIZ)V
+               L8
+                LINENUMBER 65 L8
+               FRAME CHOP 2
+                IINC 10 1
+                GOTO L2
+               L3
+                LINENUMBER 74 L3
+               FRAME FULL [] []
+                RETURN
+               L9

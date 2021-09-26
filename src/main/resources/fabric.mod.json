@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "why",
+  "version": "${version}",
+  "name": "Why",
+  "description": "",
+  "authors": [],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/why/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "me.salamander.why.client.WhyClient"
+    ],
+    "main": [
+      "me.salamander.why.Why"
+    ]
+  },
+  "mixins": [
+    "why.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.11.7",
+    "fabric": "*",
+    "minecraft": "1.17.1"
+  }
+}

@@ -1,0 +1,106 @@
+[
+  {
+    "class" : "net/minecraft/world/chunk/light/ChunkBlockLightProvider.class",
+    "methods" : [
+      {
+        "name": "getLightSourceLuminance",
+        "descriptor": "(J)I",
+        "transformed_methods": {
+
+        },
+        "expanded_variables": [1],
+        "patterns": [
+          "block_pos_unpack",
+          "expanded_method_remapping"
+        ]
+      },
+      {
+        "name" : "propagateLevel",
+        "descriptor" : "(JIZ)V",
+        "transformed_methods" : {
+          "net/minecraft/util/math/ChunkSectionPos#fromBlockPos": "(III)J",
+          "net/minecraft/world/chunk/light/ChunkBlockLightProvider#propagateLevel": "(IIIIIIIZ)V"
+        },
+        "expanded_variables" : [1, 11],
+        "patterns": [
+          "block_pos_offset",
+          "expanded_method_remapping"
+        ]
+      },
+      {
+        "name" : "getPropagatedLevel",
+        "descriptor" : "(JJI)I",
+        "transformed_methods" : {
+          "net/minecraft/world/chunk/light/ChunkBlockLightProvider#getLightSourceLuminance" : "(III)I",
+          "net/minecraft/world/chunk/light/ChunkBlockLightProvider#getStateForLighting" : "(IIILorg/apache/commons/lang3/mutable/MutableInt;)Lnet/minecraft/block/BlockState;",
+          "net/minecraft/world/chunk/light/ChunkBlockLightProvider#getOpaqueShape": "(Lnet/minecraft/block/BlockState;IIILnet/minecraft/util/math/Direction;)Lnet/minecraft/util/shape/VoxelShape;"
+        },
+        "expanded_variables": [1, 3],
+        "patterns": [
+          "check_invalid_pos",
+          "block_pos_unpack",
+          "expanded_method_remapping"
+        ]
+      },
+      {
+        "name": "recalculateLevel",
+        "descriptor": "(JJI)I",
+        "transformed_methods": {
+          "net/minecraft/world/chunk/light/ChunkBlockLightProvider#getPropagatedLevel": "(IIIIIII)I",
+          "net/minecraft/util/math/ChunkSectionPos#fromBlockPos": "(III)J",
+          "net/minecraft/world/chunk/light/ChunkBlockLightProvider#getCurrentLevelFromSection": "(Lnet/minecraft/world/chunk/ChunkNibbleArray;III)I"
+        },
+        "expanded_variables": [1, 3, 14],
+        "patterns": [
+          "check_invalid_pos",
+          "block_pos_offset",
+          "packed_inequality",
+          "expanded_method_remapping",
+          "max_pos_expansion"
+        ]
+      },
+      {
+        "name": "addLightSource",
+        "descriptor": "(Lnet/minecraft/util/math/BlockPos;I)V",
+        "transformed_methods": {
+          "net/minecraft/world/chunk/light/ChunkBlockLightProvider#updateLevel": "(IIIIIIIZ)V"
+        },
+        "expanded_variables": [],
+        "patterns": [
+          "as_long_expansion",
+          "expanded_method_remapping",
+          "max_pos_expansion"
+        ],
+        "copy" : false
+      }
+    ]
+  },
+  {
+    "class": "net/minecraft/world/chunk/light/ChunkLightProvider.class",
+    "methods": [
+        {
+        "name": "getStateForLighting",
+        "descriptor": "(JLorg/apache/commons/lang3/mutable/MutableInt;)Lnet/minecraft/block/BlockState;",
+        "transformed_methods": {
+          "net/minecraft/util/math/BlockPos$Mutable#set": "(III)Lnet/minecraft/util/math/BlockPos$Mutable;"
+        },
+        "expanded_variables": [1],
+        "patterns": [
+          "check_invalid_pos",
+          "packed_inequality",
+          "block_pos_unpack",
+          "expanded_method_remapping"
+        ]
+      },
+      {
+        "name": "isMarker",
+        "descriptor": "(J)Z",
+        "transformed_methods": {},
+        "expanded_variables": [1],
+        "patterns": [
+          "check_invalid_pos"
+        ]
+      }
+    ]
+  }
+]
