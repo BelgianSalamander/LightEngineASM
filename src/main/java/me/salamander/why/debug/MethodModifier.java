@@ -6,6 +6,7 @@ import me.salamander.why.debug.patterns.*;
 import net.minecraft.world.chunk.light.ChunkBlockLightProvider;
 import org.objectweb.asm.*;
 import org.objectweb.asm.tree.*;
+import org.objectweb.asm.tree.analysis.Analyzer;
 import org.objectweb.asm.util.Printer;
 import org.objectweb.asm.util.Textifier;
 import org.objectweb.asm.util.TraceMethodVisitor;
@@ -91,7 +92,7 @@ public class MethodModifier {
         }
     }
 
-    private static byte[] saveClass(ClassNode classNode, String suffix){
+    public static byte[] saveClass(ClassNode classNode, String suffix){
         ClassWriter classWriter = new ClassWriter(0);
 
         classNode.accept(classWriter);
@@ -152,7 +153,7 @@ public class MethodModifier {
         return newMethod;
     }
 
-    private static MethodNode copy(MethodNode method){
+    public static MethodNode copy(MethodNode method){
         ClassNode classNode = new ClassNode();
         //MethodNode other = new MethodNode();
         method.accept(classNode);
@@ -178,7 +179,7 @@ public class MethodModifier {
         return insnList;
     }
 
-    private static void applyPatterns(InsnList instructions, LocalVariableMapper mapper, List<BytecodePattern> patterns) {
+    public static void applyPatterns(InsnList instructions, LocalVariableMapper mapper, List<BytecodePattern> patterns) {
         int currentIndex = 0;
 
         while (currentIndex < instructions.size()){

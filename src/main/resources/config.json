@@ -1,0 +1,43 @@
+{
+  "method_info": {
+    "net/minecraft/world/chunk/light/ChunkBlockLightProvider#getPropagatedLevel (JJI)I": {
+      "returns_pos": false,
+      "blockpos_args": [0, 1]
+    },
+    "net/minecraft/util/math/ChunkSectionPos#fromBlockPos (J)J": {
+      "returns_pos": false,
+      "blockpos_args": [0],
+      "static": true
+    },
+    "net/minecraft/util/math/BlockPos#offset (JLnet/minecraft/util/math/Direction;)J": {
+      "returns_pos": true,
+      "blockpos_args": [0],
+      "static": true
+    },
+    "net/minecraft/util/math/BlockPos#unpackLongX (J)I": {
+      "returns_pos": false,
+      "blockpos_args": [0],
+      "static": true
+    },
+    "net/minecraft/util/math/BlockPos#unpackLongY (J)I": {
+      "returns_pos": false,
+      "blockpos_args": [0],
+      "static": true
+    },
+    "net/minecraft/util/math/BlockPos#unpackLongZ (J)I": {
+      "returns_pos": false,
+      "blockpos_args": [0],
+      "static": true
+    },
+    "net/minecraft/util/math/BlockPos#asLong ()J": {
+      "returns_pos": true,
+      "blockpos_args": []
+    }
+  },
+
+  "unpacking": [
+    "net/minecraft/util/math/BlockPos#unpackLongX (J)I",
+    "net/minecraft/util/math/BlockPos#unpackLongY (J)I",
+    "net/minecraft/util/math/BlockPos#unpackLongZ (J)I"
+  ]
+}

@@ -33,4 +33,12 @@ public class LocalVariableMapper {
     public int getLocalVariableOffset() {
         return transformedParameters.size();
     }
+
+    /**
+     * Sets up a few extra things that are needed before mapping variables. Should be called after the last call to {@code addTransformedParameter}
+     * and before any calls to anything else
+     */
+    public void generate(){
+        Collections.sort(transformedParameters);
+    }
 }
